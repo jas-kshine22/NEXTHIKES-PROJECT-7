@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Disaster Tweet Classifier</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 40%;
+            margin: auto;
+            margin-top: 80px;
+            padding: 30px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        textarea {
+            width: 100%;
+            height: 120px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            outline: none;
+        }
+        button {
+            margin-top: 15px;
+            width: 100%;
+            padding: 12px;
+            background-color: #007bff;
+            color: white;
+            font-size: 18px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            text-align: center;
+            font-size: 18px;
+            border-radius: 8px;
+        }
+        .disaster {
+            background-color: #ffcccc;
+            color: #d00000;
+        }
+        .non-disaster {
+            background-color: #ccffcc;
+            color: #006600;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Disaster Tweet Classifier</h2>
+    
+    <form action="/predict" method="post">
+        <textarea name="tweet" placeholder="Type or paste a tweet here..."></textarea>
+        <button type="submit">Classify</button>
+    </form>
+
+    {% if prediction %}
+        <div class="result {{ 'disaster' if prediction == 1 else 'non-disaster' }}">
+            {% if prediction == 1 %}
+                🚨 This tweet is classified as a **Disaster Tweet**.
+            {% else %}
+                ✅ This tweet is classified as a **Non-Disaster Tweet**.
+            {% endif %}
+        </div>
+    {% endif %}
+</div>
+
+</body>
+</html>
