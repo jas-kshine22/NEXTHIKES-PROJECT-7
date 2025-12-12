@@ -1,6 +1,9 @@
 streamlit
-scikit-learn
 pandas
 numpy
+scikit-learn
+nltk
 regex
 joblib
+wordcloud
+vaderSentiment
